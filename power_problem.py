@@ -125,9 +125,9 @@ for i in range(1,len(second_file_list)):
         xval.append(None)
         yval.append(None)
     try:
-        if float(second_file_list[i][10])>10000:
+        if float(second_file_list[i][10])>20000:
             color="red"
-        elif float(second_file_list[i][10])>5000:
+        elif float(second_file_list[i][10])>10000:
             color="yellow"
         else:
             color="green"
@@ -135,9 +135,9 @@ for i in range(1,len(second_file_list)):
         color="brown"
     color_list.append(color)
     try:
-        size=float(second_file_list[10])/200
+        size=int(second_file_list[i][10])/200
     except:
-        size=100
+        size=50
     size_list.append(size)
 
 my_scatterplot=plt.scatter(xval,yval,color=color_list,s=size_list,alpha=0.1)
