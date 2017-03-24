@@ -47,10 +47,10 @@ for row in reader:  # split the text up
     new_list.append(row)
 
 
-key="60614"
+key="60614" #define the thing we are searching for
 key_list=[]
 for i in range(len(new_list)):
-    if str(new_list[i][0])==key:
+    if str(new_list[i][0])==key: #compare list item to key
         key_list.append(new_list[i])
 print("Your zip code's average residential rate is",key_list[0][8])
 #2 What is the MEDIAN rate for all BUNDLED RESIDENTIAL rates in Illinois? Use the data you extracted to check all "IL" zipcodes to answer this. (10pts)
@@ -60,7 +60,7 @@ suma=0
 illinois_list=[]
 full_illinois_list=[]
 for i in range(len(new_list)):
-    if str(new_list[i][3])==key2 and str(new_list[i][4])=="Bundled":
+    if str(new_list[i][3])==key2 and str(new_list[i][4])=="Bundled": #same as #1 just has two keys. "bundled" and "IL"
        illinois_list.append(float(new_list[i][-1]))
        full_illinois_list.append(new_list[i])
 
@@ -75,7 +75,7 @@ print("The Median rate for all bundled residential rates is",insertion_sort(illi
 
 
 #3 What city in Illinois has the lowest residential rate?  Which has the highest?  You will need to go through the database and compare each value for this one. Then you will need to reference the zipcode dataset to get the city.  (15pts)
-def sorting(my_list):
+def sorting(my_list): #sort the list so we can find the lowest residential rate
     for pos in range(len(my_list)):
         min_pos = pos
         for scan_pos in range(min_pos, len(my_list)):
@@ -87,7 +87,7 @@ def sorting(my_list):
 
     print(my_list)
 
-sorting(full_illinois_list)
+sorting(full_illinois_list) #use the function for sorting
 
 file2=open("free-zipcode-database-Primary.csv","r")
 reader = csv.reader(file2, delimiter=",")  # give instructions for splitting the text
@@ -95,9 +95,9 @@ second_file_list=[]
 for row in reader:  # split the text up
     second_file_list.append(row)
 
-key_highest=full_illinois_list[0][0]
+key_highest=full_illinois_list[0][0] #define what we are searching for
 key_lowest=full_illinois_list[-1][0]
-answer=None
+answer=None #blank variables
 answer2=None
 
 for i in range(len(new_list)):
@@ -119,13 +119,13 @@ size_list=[]
 
 for i in range(1,len(second_file_list)):
     try:
-        xval.append(float(second_file_list[i][5]))
+        xval.append(float(second_file_list[i][5])) #add the longitude and latitude
         yval.append(float(second_file_list[i][6]))
     except:
         xval.append(None)
         yval.append(None)
     try:
-        if float(second_file_list[i][10])>20000:
+        if float(second_file_list[i][10])>20000: #determine color based on number of citizens
             color="red"
         elif float(second_file_list[i][10])>10000:
             color="yellow"
@@ -135,13 +135,13 @@ for i in range(1,len(second_file_list)):
         color="brown"
     color_list.append(color)
     try:
-        size=int(second_file_list[i][10])/200
+        size=int(second_file_list[i][10])/200 #determine size
     except:
         size=50
     size_list.append(size)
 
-my_scatterplot=plt.scatter(xval,yval,color=color_list,s=size_list,alpha=0.1)
+my_scatterplot=plt.scatter(xval,yval,color=color_list,s=size_list,alpha=0.1) #add item to plot
 
-plt.show()
+plt.show() #show the plot
 #4 (Harder) USING BOTH THE ZIP CODE DATA AND THE POWER DATA... Make a scatterplot of all zip codes in Illinois according to their Lat/Long.  Make the marker red for the top 25% in residential power rate.  Make the marker yellow for the middle 25 to 50 percentile. Make the marker green if customers pay a rate in the bottom 50% of residential power cost.  This one is very challenging.  You are using data from two different datasets and merging them into one.  There are many ways to solve. (20pts)
 
