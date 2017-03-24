@@ -132,7 +132,7 @@ for i in range(1,len(second_file_list)):
         else:
             color="green"
     except:
-        color="brown"
+        color="black"
     color_list.append(color)
     try:
         size=int(second_file_list[i][10])/200 #determine size
