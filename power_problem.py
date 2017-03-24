@@ -122,8 +122,8 @@ for i in range(1,len(second_file_list)):
         xval.append(float(second_file_list[i][5]))
         yval.append(float(second_file_list[i][6]))
     except:
-        xval.append(1)
-        yval.append(1)
+        xval.append(None)
+        yval.append(None)
     try:
         if float(second_file_list[i][10])>10000:
             color="red"
